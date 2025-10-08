@@ -5,5 +5,6 @@ This CloudFormation Template (CFT) helps you launch an EC2 instance in a specifi
 ---
 
 ## Template Version
-`yaml
+```yaml
 AWSTemplateFormatVersion: 2010-09-09
+
