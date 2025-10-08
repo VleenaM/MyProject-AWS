@@ -5,24 +5,16 @@ This CloudFormation Template (CFT) helps you launch an EC2 instance in a specifi
 ---
 
 ##  **Template Version**
-```yaml  AWSTemplateFormatVersion: 2010-09-09 ```
-
+```AWSTemplateFormatVersion: 2010-09-09 ```
 Specifies the CloudFormation template version. Here, 2010-09-09 is the current standard.
-Description
-Description: EC2 instance creation using the CFT 
+
+## **Description**
+```Description: EC2 instance creation using the CFT ```
 Provides a short description of what this template does.
-Parameters
-Parameters allow you to pass dynamic values when creating a stack.
-Parameters: VpcId: Type: AWS::EC2::VPC::Id Description: Select the VPC where you want to launch the EC2 Instance 
-VpcId: Choose the VPC to launch the EC2 instance.
-KeyName: Type: AWS::EC2::KeyPair::KeyName Description: Select the keypair name that you need to give to the EC2 Instance 
-KeyName: The keypair used for SSH access to the EC2 instance.
-AvailabilityZone: Type: AWS::EC2::AvailabilityZone::Name Description: Provide the AvailabilityZone where you want your EC2 Instance 
-AvailabilityZone: Specify which AZ the EC2 instance should be in.
-ImageId: Type: AWS::EC2::Image::Id Description: Provide the AMI ID 
-ImageId: The AMI to use for the EC2 instance.
-SubnetId: Type: AWS::EC2::Subnet::Id Description: Provide the Subnet Id where you want the EC2 Instance to launch 
-SubnetId: The subnet in which to launch the EC2 instance.
+
+## **Parameters** ##
+Parameters allow you to pass dynamic values when creating a stack on AWS console.
+
 Resources
 Resources define the AWS resources to create.
 1. Security Group
