@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: EC2 instance creation using the CFT
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: Select the VPC where you want to launch the EC2 Instance
+
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Select the keypair name that you need to give to the EC2 Instance
+
+  AvailabilityZone:
+    Type: AWS::EC2::AvailabilityZone::Name
+    Description: Provide the AvailabilityZone where you want your EC2 Instance
+
+  ImageId:
+    Type: AWS::EC2::Image::Id
+    Description: Provide the AMI ID
+  
+  SubnetId:
+    Type: AWS::EC2::Subnet::Id
+    Description: Provide the Subnet Id where you want the EC2 Instance to launch
+  
+
+Resources:
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group for EC2
+      VpcId: !Ref VpcId
+      SecurityGroupIngress: 
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+
+  Ec2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: !Ref AvailabilityZone
+      ImageId: !Ref ImageId
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId: !Ref SubnetId
+          GroupSet:
+            - !Ref MySecurityGroup
+
+
